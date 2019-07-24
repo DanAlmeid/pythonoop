@@ -32,12 +32,15 @@ class Pet(Pessoa):
         hoje = datetime.today().date()
         if self.nasc_pet.year == hoje.year:
             idade = hoje.month - self.nasc_pet.month
-            print('O pet tem {} mese(s)' .format(idade))
-        elif self.nasc_pet.year < hoje.year:
+            print('O pet tem {} mes(es)' .format(idade))
+        elif self.nasc_pet.year < hoje.year and (hoje.month - self.nasc_pet.month) >= 0:
             idade = hoje.year - self.nasc_pet.year
             print('O pet tem {} ano(s)' .format(idade))
-
+        else:
+            idade = hoje - self.nasc_pet
+            idade = idade.days/30
+            print('O pet tem  {} mes(es)' .format(int(idade)))
 
 pessoa = Pessoa('Danilo', 21)
-pet = Pet('Kachorro','20/1/2018','Danilo',21)
+pet = Pet('Kachorro','20/8/2018','Danilo',21) 
 print(pet.idadePet())
