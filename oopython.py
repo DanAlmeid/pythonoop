@@ -30,7 +30,10 @@ class Pet(Pessoa):
         self.nasc_pet = nasc_pet
     def idadePet(self):
         hoje = datetime.today().date()
-        if self.nasc_pet.year == hoje.year:
+        if self.nasc_pet.year == hoje.year and hoje.month == self.nasc_pet.month:
+            idade = hoje.day - self.nasc_pet.day
+            print('O pet tem {} dia(s)' .format(idade))
+        elif self.nasc_pet.year == hoje.year:
             idade = hoje.month - self.nasc_pet.month
             print('O pet tem {} mes(es)' .format(idade))
         elif self.nasc_pet.year < hoje.year and (hoje.month - self.nasc_pet.month) >= 0:
@@ -42,5 +45,5 @@ class Pet(Pessoa):
             print('O pet tem  {} mes(es)' .format(int(idade)))
 
 pessoa = Pessoa('Danilo', 21)
-pet = Pet('Kachorro','20/8/2018','Danilo',21) 
+pet = Pet('Kachorro','5/6/2016','Danilo',21) 
 print(pet.idadePet())
